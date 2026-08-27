@@ -6,8 +6,11 @@
     interactiveShellInit = ''
       set -g fish_greeting ""
 
-      # Dynamically set dotfiles flake path from user's current HOME directory
-      if test -d "$HOME/dotfiles"
+      # Set flake path: private-dotfiles takes priority over public dotfiles
+      if test -d "$HOME/private-dotfiles"
+        set -gx FLAKE "$HOME/private-dotfiles"
+        set -gx NH_FLAKE "$HOME/private-dotfiles"
+      else if test -d "$HOME/dotfiles"
         set -gx FLAKE "$HOME/dotfiles"
         set -gx NH_FLAKE "$HOME/dotfiles"
       end
