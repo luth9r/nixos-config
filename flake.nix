@@ -15,6 +15,7 @@
       vars = import ./vars.nix;
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      # Standalone NixOS config (uses default vars.nix — for CI / quick testing)
       nixosConfigurations = {
         ${vars.hostname} = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -32,5 +33,12 @@
           ];
         };
       };
+
+      # Reusable modules for private flakes
+      # Usage: inputs.dotfiles.nixosModules.default
+      nixosModules.default = import ./hosts/common;
+
+      # Usage: inputs.dotfiles.homeManagerModules.default
+      homeManagerModules.default = import ./home/luther;
     };
 }
