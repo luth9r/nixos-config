@@ -22,6 +22,7 @@
     playerctl
     celluloid
     vlc
+    loupe
     awww
     libnotify
     wf-recorder

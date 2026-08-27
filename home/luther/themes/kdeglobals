@@ -3,6 +3,8 @@
 
 [General]
 ColorScheme=Monochrome
+TerminalApplication=kitty
+TerminalService=kitty.desktop
 font=@font@,10,-1,5,50,0,0,0,0,0
 menuFont=@font@,10,-1,5,50,0,0,0,0,0
 smallestReadableFont=@font@,8,-1,5,50,0,0,0,0,0

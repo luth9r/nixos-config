@@ -231,6 +231,21 @@ label-max-length = 0
 button-bg-color = "bg-surface-elevated"
 left-click = "dropdown:battery"
 
+[modules.hyprsunset]
+format = ""
+temperature = 4200
+gamma = 100
+icon-off = "ld-sun-symbolic"
+icon-on = "ld-moon-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = false
+button-bg-color = "bg-surface-elevated"
+left-click = ":toggle"
+
 [modules.notifications]
 icon-name = "ld-bell-symbolic"
 icon-unread = "ld-bell-dot-symbolic"

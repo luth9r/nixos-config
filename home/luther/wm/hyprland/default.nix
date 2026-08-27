@@ -43,6 +43,7 @@ in
     cliphist
     pamixer
     brightnessctl
+    hyprsunset
   ];
 
   # Centralized dynamic Lua variables generated directly from vars.nix

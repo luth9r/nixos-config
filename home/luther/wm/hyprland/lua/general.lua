@@ -38,6 +38,7 @@ hl.config({
         disable_hyprland_logo = true,
         force_default_wallpaper = 0,
         vrr = 1,
+        focus_on_activate = false,
         initial_workspace_tracking = vars.initial_workspace_tracking or 1,
     },
     dwindle = {

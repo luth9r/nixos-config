@@ -3,9 +3,9 @@
 let
   rightModules =
     if vars.isLaptop or false then
-      ''["keyboard-input", "bluetooth", "network", "volume", "battery", "notifications", "dashboard"]''
+      ''["keyboard-input", "bluetooth", "network", "volume", "battery", "hyprsunset", "notifications", "dashboard"]''
     else
-      ''["keyboard-input", "bluetooth", "network", "volume", "notifications", "dashboard"]'';
+      ''["keyboard-input", "bluetooth", "network", "volume", "hyprsunset", "notifications", "dashboard"]'';
 
   configuredConfig = pkgs.replaceVars ./config/config.toml {
     font = vars.font;

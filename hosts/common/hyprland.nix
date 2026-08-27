@@ -22,6 +22,9 @@
   # GNOME Keyring Daemon for persistent session tokens, browser cookies & secrets
   services.gnome.gnome-keyring.enable = true;
 
+  # GVFS for virtual filesystems, trash, network shares, and file-open handlers
+  services.gvfs.enable = true;
+
   # Enable XDG Desktop Portals for Wayland screen sharing and file pickers
   xdg.portal = {
     enable = true;
@@ -34,7 +37,16 @@
   # Dconf for GNOME/GTK color-scheme preferences
   programs.dconf.enable = true;
 
-  # Essential Wayland & system utilities
+  # Link KDE service directories for Dolphin "Open With" dialog & KIO
+  environment.pathsToLink = [
+    "/share/kservices6"
+    "/share/kservicetypes6"
+    "/share/kxmlgui6"
+    "/share/kconf_update"
+    "/share/qlogging-categories6"
+  ];
+
+  # Essential Wayland, KDE service & system utilities
   environment.systemPackages = with pkgs; [
     kitty
     polkit_gnome
@@ -45,5 +57,15 @@
     glib
     libsecret
     seahorse
+    xdg-utils
+    shared-mime-info
+    kdePackages.kservice
+    kdePackages.kio
+    kdePackages.kio-extras
+    kdePackages.kio-admin
+    kdePackages.kio-fuse
+    (pkgs.writeShellScriptBin "konsole" ''
+      exec ${pkgs.kitty}/bin/kitty "$@"
+    '')
   ];
 }
