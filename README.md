@@ -1,23 +1,6 @@
 <div align="center">
 
-```text
-     _   ___    _      
-    +o\  \  \  / \     
-    \oo\  \  \/  /     
-  ,oo+oo+oo\   ,/ +\   
- <oooooooooo\  \ /os;  
-     /``/    \  ,oo/   
-,─~─'  /      \,oooooo,
-\__   ;s      /oo/sss>`
-  /  /so\____/ss/____  
- `, / \oo\   ```     / 
-  \/ /sooo\─~.  .─~─`  
-    /so/\oo\  \  \     
-    \o/  \s+\  \_/     
-          ```          
-```
-
-# dotfiles
+<img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-colours.svg" width="120px"/>
 
 [![Built with Nix](https://img.shields.io/static/v1?label=Built%20with&message=NixOS%2026.11&color=5277C3&style=flat-square&logo=nixos&logoColor=white)](https://nixos.org)
 [![Compositor](https://img.shields.io/static/v1?label=Compositor&message=Hyprland&color=00A3CC&style=flat-square&logo=hyprland&logoColor=white)](https://hyprland.org)
