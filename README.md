@@ -22,7 +22,7 @@
 [![Built with Nix](https://img.shields.io/static/v1?label=Built%20with&message=NixOS%2026.11&color=5277C3&style=flat-square&logo=nixos&logoColor=white)](https://nixos.org)
 [![Compositor](https://img.shields.io/static/v1?label=Compositor&message=Hyprland&color=00A3CC&style=flat-square&logo=hyprland&logoColor=white)](https://hyprland.org)
 [![Bar](https://img.shields.io/static/v1?label=Bar&message=Wayle&color=6C5CE7&style=flat-square)](https://wayle.app)
-[![License](https://img.shields.io/static/v1?label=License&message=MIT&color=2ecc71&style=flat-square)](./LICENSE)
+[![License](https://img.shields.io/static/v1?label=License&message=Unlicense&color=2ecc71&style=flat-square)](./LICENSE)
 
 Personal NixOS and Home Manager configuration with Hyprland and Wayle. Fully configured from a single file (`vars.nix`).
 
