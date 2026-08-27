@@ -2,6 +2,10 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 
 hl.on("hyprland.start", function()
+    -- Import environment variables into DBus and Systemd user session
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
+    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
+
     -- Polkit authentication agent
     hl.exec_cmd("/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1")
 
@@ -10,7 +14,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("~/.config/hypr/scripts/change-wall.sh --init")
 
     -- Wayle Desktop Bar, Notification Daemon & Control Center
-    hl.exec_cmd("wayle shell")
+    hl.exec_cmd("pkill -x wayle; wayle shell")
 
     -- Idle & Lock daemon
     hl.exec_cmd("hypridle")
@@ -18,10 +22,6 @@ hl.on("hyprland.start", function()
     -- Clipboard Manager
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
-
-    -- Import environment variables into DBus and Systemd user session
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
-    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
 
     -- Build KDE application service cache for Dolphin "Open With" dialog
     hl.exec_cmd("kbuildsycoca6 --noincremental 2>/dev/null || true")
