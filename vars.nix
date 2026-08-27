@@ -15,6 +15,9 @@
   fileManager = "dolphin";
   browser = "firefox";
 
+  # Relative path to your dotfiles flake directory inside $HOME (default: "nixos-config")
+  flakeDir = "nixos-config";
+
   # Device form-factor: set to false to hide battery indicator on desktop
   isLaptop = true;
 

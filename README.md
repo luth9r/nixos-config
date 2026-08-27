@@ -227,8 +227,8 @@ perf      # Run command with Feral GameMode governor boost (gamemoderun)
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/luth9r/dotfiles.git ~/dotfiles
-   cd ~/dotfiles
+   git clone https://github.com/luth9r/nixos-config.git ~/nixos-config
+   cd ~/nixos-config
    ```
 
 2. **Generate hardware configuration for your machine**:
@@ -236,9 +236,10 @@ perf      # Run command with Feral GameMode governor boost (gamemoderun)
    nixos-generate-config --show-hardware-config > hosts/nixos/hardware-configuration.nix
    ```
 
-3. **Adjust [`vars.nix`](file:///home/luther/dotfiles/vars.nix)**:
+3. **Adjust [`vars.nix`](./vars.nix)**:
    - Set `username`, `hostname`, and select your `gpuDriver` (`hybrid-amd-nvidia`, `nvidia`, `amd`, `intel`, or `vm`).
    - Set `isLaptop = false` if running on a desktop machine.
+   - Customize colors, fonts, gaps, and keybindings to your liking.
 
 4. **Apply configuration**:
    ```bash
@@ -247,6 +248,63 @@ perf      # Run command with Feral GameMode governor boost (gamemoderun)
 
 ---
 
+### Private Flake (Advanced)
+
+If you want to keep your personal data (real name, email, hardware config, extra packages) private while staying up-to-date with this repo, use this as a flake input:
+
+```nix
+# your-private-repo/flake.nix
+{
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixosConfig = {
+      url = "github:luth9r/nixos-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+  };
+
+  outputs = { nixpkgs, home-manager, nixosConfig, ... }:
+  let
+    system = "x86_64-linux";
+    vars = import ./vars.nix;   # your private vars
+  in {
+    nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit vars; };
+      modules = [
+        ./hardware-configuration.nix
+        nixosConfig.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit vars; };
+          home-manager.users.${vars.username} = {
+            imports = [
+              nixosConfig.homeManagerModules.default
+              ./extra.nix   # your personal packages & config
+            ];
+          };
+        }
+      ];
+    };
+  };
+}
+```
+
+Update this config:
+```bash
+nix flake update nixosConfig
+sudo nixos-rebuild switch --flake .
+```
+
+---
+
 ## License
 
-This repository is licensed under the [MIT License](./LICENSE).
+Released into the public domain under the [Unlicense](./LICENSE).

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 
 {
   programs.fish = {
@@ -6,10 +6,15 @@
     interactiveShellInit = ''
       set -g fish_greeting ""
 
-      # Set flake path: private-dotfiles takes priority over public dotfiles
-      if test -d "$HOME/private-dotfiles"
-        set -gx FLAKE "$HOME/private-dotfiles"
-        set -gx NH_FLAKE "$HOME/private-dotfiles"
+      # Flake path configured directly from vars.nix
+      set -l configured_flake "$HOME/${vars.flakeDir or "nixos-config"}"
+
+      if test -d "$configured_flake"
+        set -gx FLAKE "$configured_flake"
+        set -gx NH_FLAKE "$configured_flake"
+      else if test -d "$HOME/nixos-config"
+        set -gx FLAKE "$HOME/nixos-config"
+        set -gx NH_FLAKE "$HOME/nixos-config"
       else if test -d "$HOME/dotfiles"
         set -gx FLAKE "$HOME/dotfiles"
         set -gx NH_FLAKE "$HOME/dotfiles"
