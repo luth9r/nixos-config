@@ -1,0 +1,12 @@
+/**
+ * Centralized Colors for Rofi
+ * Generated dynamically from vars.nix
+ */
+* {
+    bg: @bg@;
+    bg-alt: @bgAlt@;
+    fg: @fg@;
+    fg-dim: @fgDim@;
+    accent: @accent@;
+    border-col: @borderCol@;
+}

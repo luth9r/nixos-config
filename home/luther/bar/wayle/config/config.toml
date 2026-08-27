@@ -1,0 +1,285 @@
+# Wayle Configuration - Illogical Impulse Style Layout & Native Notification Daemon
+# Dynamically parameterized from vars.nix
+imports = []
+
+[general]
+font-sans = "@font@"
+font-mono = "@font@"
+tearing-mode = false
+
+[styling]
+scale = 1.0
+rounding = "sm"
+
+[styling.palette]
+bg = "@colorBg@"
+surface = "@colorSurface@"
+elevated = "@colorBgAlt@"
+fg = "@colorFg@"
+fg-muted = "@colorFgMuted@"
+primary = "@colorAccent@"
+red = "@colorWarning@"
+yellow = "@colorBorderActive2@"
+green = "@colorAccent@"
+blue = "@colorAccent@"
+
+[bar]
+scale = 1.0
+inset-edge = 0.4
+inset-ends = 0.5
+padding = 0.25
+padding-ends = 0.5
+module-gap = 0.5
+location = "top"
+exclusive = true
+layer = "top"
+bg = "transparent"
+background-opacity = 0
+border-location = "none"
+border-width = 0
+rounding = "none"
+shadow = "none"
+button-variant = "icon-square"
+button-opacity = 100
+button-bg-opacity = 100
+button-icon-size = 1.0
+button-icon-padding = 1.0
+button-label-size = 1.0
+button-label-weight = "semibold"
+button-label-padding = 1.0
+button-rounding = "sm"
+button-gap = 0.8
+button-icon-position = "start"
+button-border-location = "all"
+button-border-width = 1
+button-group-border-location = "none"
+button-group-border-width = 1
+button-group-padding = 0.0
+button-group-module-gap = 0.25
+button-group-background = "bg-elevated"
+button-group-opacity = 100
+button-group-border-color = "border-default"
+button-group-rounding = "sm"
+dropdown-shadow = true
+dropdown-opacity = 100
+dropdown-autohide = true
+dropdown-freeze-label = true
+
+[[bar.layout]]
+monitor = "*"
+show = true
+left = ["hyprland-workspaces", "window-title"]
+center = ["media", "clock"]
+right = @rightModules@
+
+[modules]
+custom = []
+
+[modules.hyprland-workspaces]
+min-workspace-count = 10
+monitor-specific = false
+show-special = true
+urgent-show = true
+urgent-mode = "workspace"
+display-mode = "label"
+label-use-name = false
+numbering = "absolute"
+divider = " "
+app-icons-show = false
+icon-gap = 0.3
+workspace-padding = 0.5
+icon-size = 1.0
+label-size = 1.0
+active-indicator = "background"
+active-color = "accent"
+occupied-color = "fg-muted"
+empty-color = "fg-subtle"
+container-bg-color = "bg-surface-elevated"
+border-show = false
+border-color = "border-default"
+
+[modules.window-title]
+format = "{{ title }}"
+icon-name = "ld-app-window-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 40
+button-bg-color = "bg-surface-elevated"
+left-click = ""
+
+[modules.media]
+icon-type = "application-mapped"
+format = "{{ title }} - {{ artist }}"
+icon-name = "ld-music-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 30
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:media"
+
+[modules.clock]
+format = "%d.%m.%Y %H:%M"
+icon-name = "tb-calendar-time-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:calendar"
+right-click = "dropdown:weather"
+
+[modules.keyboard-input]
+format = "{{ alias }}"
+icon-name = "ld-keyboard-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = ""
+
+[modules.keyboard-input.layout-alias-map]
+"English (US)" = "US"
+"English (UK)" = "UK"
+"English" = "US"
+"Russian" = "RU"
+"Ukrainian" = "UA"
+"Polish" = "PL"
+"German" = "DE"
+"French" = "FR"
+"Spanish" = "ES"
+
+[modules.bluetooth]
+disabled-icon = "ld-bluetooth-off-symbolic"
+disconnected-icon = "ld-bluetooth-symbolic"
+connected-icon = "ld-bluetooth-connected-symbolic"
+searching-icon = "ld-bluetooth-searching-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 15
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:bluetooth"
+
+[modules.network]
+wifi-disabled-icon = "ld-wifi-off-symbolic"
+wifi-offline-icon = "ld-wifi-off-symbolic"
+wifi-connected-icon = "ld-wifi-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 15
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:network"
+
+[modules.volume]
+level-icons = [
+    "ld-volume-symbolic",
+    "ld-volume-1-symbolic",
+    "ld-volume-2-symbolic",
+]
+icon-muted = "ld-volume-x-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+format = "{{ percent }}%"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:audio"
+middle-click = "wayle audio output-mute"
+
+[modules.battery]
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+format = "{{ percent }}%"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:battery"
+
+[modules.notifications]
+icon-name = "ld-bell-symbolic"
+icon-unread = "ld-bell-dot-symbolic"
+icon-dnd = "ld-bell-off-symbolic"
+border-show = false
+border-color = "border-default"
+icon-show = true
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+label-show = true
+label-color = "fg-default"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:notification"
+right-click = "wayle notify dnd"
+icon-source = "automatic"
+popup-position = "top-right"
+popup-max-visible = 5
+popup-stacking-order = "newest-first"
+popup-duration = 5000
+popup-hover-pause = true
+popup-gap = 8.0
+popup-shadow = true
+popup-layer = "overlay"
+popup-close-behavior = "dismiss"
+popup-urgency-bar = "low"
+
+[modules.dashboard]
+border-show = false
+border-color = "border-default"
+icon-color = "fg-default"
+icon-bg-color = "bg-surface-elevated"
+left-click = "dropdown:dashboard"
+dropdown-lock-command = "hyprlock"
+dropdown-logout-command = "hyprctl dispatch 'hl.dsp.exit()' 2>/dev/null || loginctl terminate-user $USER"
+dropdown-reboot-command = "systemctl reboot"
+dropdown-poweroff-command = "systemctl poweroff"
+
+[osd]
+enabled = true
+position = "bottom"
+duration = 2000
+margin = 120.0
+border = true
+layer = "overlay"
+
+[wallpaper]
+engine-enabled = true
+transition-type = "simple"
+transition-duration = 0.7
+transition-fps = 60
+cycling-enabled = false

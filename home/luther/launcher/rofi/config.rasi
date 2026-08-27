@@ -1,0 +1,146 @@
+@import "colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+configuration {
+    modi: "drun,run,filebrowser,window";
+    show-icons: true;
+    display-drun: " ";
+    display-run: " ";
+    display-filebrowser: " ";
+    display-window: " ";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    height: 460px;
+    width: 520px;
+    border: 2px solid;
+    border-color: @border-col;
+    border-radius: 14px;
+    background-color: @bg;
+    padding: 16px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 12px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @bg-alt;
+    border: 1px solid;
+    border-color: @bg-alt;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+    font-weight: bold;
+    margin: 0px 8px 0px 0px;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Search applications...";
+    placeholder-color: @fg-dim;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 7;
+    spacing: 4px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+    scrollbar: false;
+    border: 0px;
+}
+
+scrollbar {
+    width: 0px;
+    border: 0px;
+    handle-width: 0px;
+    padding: 0px;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    border-radius: 8px;
+    padding: 8px 12px;
+    spacing: 12px;
+}
+
+element-icon {
+    size: 24px;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color: @accent;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color: @accent;
+    border: 1px solid;
+    border-color: @border-col;
+}
+
+element selected.urgent {
+    background-color: @bg-alt;
+    text-color: @accent;
+    border: 1px solid;
+    border-color: @border-col;
+}
+
+element selected.active {
+    background-color: @bg-alt;
+    text-color: @accent;
+    border: 1px solid;
+    border-color: @border-col;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element alternate.urgent {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element alternate.active {
+    background-color: transparent;
+    text-color: @accent;
+}

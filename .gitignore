@@ -1,0 +1,16 @@
+# Nix / Flakes build artifacts
+result
+result-*
+
+# Python caches
+__pycache__/
+*.pyc
+.cache/
+
+# Editor & OS temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+*.backup
+.direction

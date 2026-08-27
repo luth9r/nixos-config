@@ -1,0 +1,16 @@
+[General]
+ShowFullPath=true
+ViewPropsTimestamp=2026-08-27
+Version=200
+
+[IconsMode]
+PreviewSize=128
+
+[CompactMode]
+PreviewSize=24
+
+[DetailsMode]
+PreviewSize=32
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,djvuthumbnail,dndextractthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraimagethumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,pdfthumbnail,svgthumbnail,textthumbnail,videothumbnail
