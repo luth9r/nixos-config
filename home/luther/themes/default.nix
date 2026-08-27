@@ -87,11 +87,12 @@ in
     style.name = "breeze";
   };
 
-  # Session variables for dark theme
+  # Session variables for dark theme and KDE file picker
   home.sessionVariables = {
     GTK_THEME = vars.gtkTheme;
     QT_QPA_PLATFORMTHEME = "kde";
     QT_STYLE_OVERRIDE = "breeze";
+    GTK_USE_PORTAL = "1";
   };
 
   # Cursor settings for Home-Manager
