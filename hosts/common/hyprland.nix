@@ -25,13 +25,24 @@
   # GVFS for virtual filesystems, trash, network shares, and file-open handlers
   services.gvfs.enable = true;
 
-  # Enable XDG Desktop Portals for Wayland screen sharing and file pickers
+  # Enable XDG Desktop Portals for Wayland screen sharing and KDE/Qt file pickers
   xdg.portal = {
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
+      pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-gtk
     ];
+    config = {
+      common = {
+        default = [ "hyprland" "kde" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+      };
+      hyprland = {
+        default = [ "hyprland" "kde" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+      };
+    };
   };
 
   # Dconf for GNOME/GTK color-scheme preferences
