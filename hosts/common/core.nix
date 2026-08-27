@@ -92,7 +92,6 @@
   # Core system-wide CLI packages
   environment.systemPackages = with pkgs; [
     git
-    vim
     wget
     curl
     pciutils

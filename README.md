@@ -194,7 +194,7 @@ All personal parameters, device toggles, and hardware choices are centralized in
         │   │   ├── colorschemes/custom-dark.micro
         │   │   ├── default.nix
         │   │   └── settings.json
-        │   └── starship/              # Starship prompt configuration
+        │   └── starship/              # Starship prompt (config inline in default.nix)
         │       └── default.nix
         ├── themes/                    # Theming, fonts, icons & cursor configuration
         │   ├── default.nix            # GTK/Qt theme links, Breeze & Tela icons

@@ -36,7 +36,6 @@ in
     kdePackages.qqc2-breeze-style
     kdePackages.breeze-gtk
     tela-circle-icon-theme
-    papirus-icon-theme
     adw-gtk3
     bibata-cursors
   ];
