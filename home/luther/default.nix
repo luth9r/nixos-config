@@ -6,6 +6,7 @@
     ./bar/wayle
     ./launcher/rofi
     ./terminal/kitty
+    ./terminal/micro
     ./terminal/starship
     ./shell/fish.nix
     ./shell/tools.nix

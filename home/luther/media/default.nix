@@ -60,4 +60,14 @@
     source = ./scripts/airplane-mode.sh;
     executable = true;
   };
+
+  xdg.configFile."hypr/scripts/search.sh" = {
+    source = ./scripts/search.sh;
+    executable = true;
+  };
+
+  xdg.configFile."hypr/scripts/find-files.sh" = {
+    source = ./scripts/find-files.sh;
+    executable = true;
+  };
 }

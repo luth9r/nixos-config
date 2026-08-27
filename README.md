@@ -133,9 +133,11 @@ nfu       # Update flake inputs (nix flake update)
         │   │   ├── airplane-mode.sh
         │   │   ├── change-wall.sh
         │   │   ├── cheatsheet.sh
+        │   │   ├── find-files.sh
         │   │   ├── powermenu.sh
         │   │   ├── record.sh
-        │   │   └── screenshot.sh
+        │   │   ├── screenshot.sh
+        │   │   └── search.sh
         │   └── default.nix
         ├── shell/                     # Shell configuration & CLI tools
         │   ├── fastfetch/             # Fastfetch config & ASCII logo
@@ -148,6 +150,10 @@ nfu       # Update flake inputs (nix flake update)
         │   │   ├── colors.conf
         │   │   ├── default.nix
         │   │   └── kitty.conf
+        │   ├── micro/                 # Micro terminal editor config & theme
+        │   │   ├── colorschemes/custom-dark.micro
+        │   │   ├── default.nix
+        │   │   └── settings.json
         │   └── starship/              # Starship prompt configuration
         │       ├── default.nix
         │       └── starship.toml

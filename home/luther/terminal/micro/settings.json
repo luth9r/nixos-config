@@ -1,0 +1,12 @@
+{
+  "colorscheme": "custom-dark",
+  "tabsize": 4,
+  "tabstospaces": true,
+  "softwrap": true,
+  "mouse": true,
+  "saveundo": true,
+  "clipboard": "external",
+  "scrollbar": false,
+  "statusformatl": "$(filename) $(modified)(%y/%X) $(opt:filetype) | %l:%c",
+  "statusformatr": "%p"
+}
