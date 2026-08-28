@@ -44,5 +44,9 @@ in
       kdePackages.qtvirtualkeyboard
     ];
     theme = "sddm-astronaut-theme";
+    settings.Theme = {
+      CursorTheme = vars.cursorTheme;
+      CursorSize = toString vars.cursorSize;
+    };
   };
 }
