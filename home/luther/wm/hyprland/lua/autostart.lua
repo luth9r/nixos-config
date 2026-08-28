@@ -6,6 +6,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
 
+    -- Restart XDG Desktop Portals with the imported environment
+    hl.exec_cmd("systemctl --user restart xdg-desktop-portal-hyprland plasma-xdg-desktop-portal-kde xdg-desktop-portal 2>/dev/null || true")
+
     -- KDE Polkit authentication agent (sudo/admin password dialogs)
     hl.exec_cmd("/run/current-system/sw/libexec/polkit-kde-authentication-agent-1")
 
