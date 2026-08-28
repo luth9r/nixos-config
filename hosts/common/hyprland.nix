@@ -53,6 +53,7 @@
 
   # Link KDE service directories for Dolphin "Open With" dialog & KIO
   environment.pathsToLink = [
+    "/libexec"
     "/share/kservices6"
     "/share/kservicetypes6"
     "/share/kxmlgui6"
