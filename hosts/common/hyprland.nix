@@ -62,7 +62,7 @@
   # Essential Wayland, KDE service & system utilities
   environment.systemPackages = with pkgs; [
     kitty
-    polkit_gnome
+    kdePackages.polkit-kde-agent-1
     wl-clipboard
     libnotify
     brightnessctl

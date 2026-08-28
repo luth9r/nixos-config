@@ -6,8 +6,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_DATA_DIRS PATH GTK_USE_PORTAL")
 
-    -- Polkit authentication agent
-    hl.exec_cmd("/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1")
+    -- KDE Polkit authentication agent (sudo/admin password dialogs)
+    hl.exec_cmd("/run/current-system/sw/libexec/polkit-kde-authentication-agent-1")
 
     -- Wallpaper daemon & initial wallpaper setup
     hl.exec_cmd("awww-daemon || swww-daemon")
