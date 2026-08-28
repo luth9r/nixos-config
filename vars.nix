@@ -63,6 +63,7 @@
   iconTheme = "Tela-circle-dark";
   cursorTheme = "Bibata-Modern-Classic";
   cursorSize = 24;
+  qtScale = "1.25";                     # Global scale factor for Qt/KDE applications (1.0 = 100%, 1.25 = 125%, 1.5 = 150%)
 
   # Centralized Color Palette (Ultra-Muted Monochrome with Desaturated Accents)
   colorBg = "#0a0a0a";                  # Main background
