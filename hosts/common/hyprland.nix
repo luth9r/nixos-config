@@ -27,6 +27,7 @@
   # Enable XDG Desktop Portals: Hyprland for screen capture, KDE for everything else
   xdg.portal = {
     enable = true;
+    xdgOpenUsePortal = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
       pkgs.kdePackages.xdg-desktop-portal-kde
