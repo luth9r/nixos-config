@@ -16,10 +16,12 @@
   # Security, Polkit & PAM for Hyprlock & SDDM
   security.polkit.enable = true;
   security.pam.services.hyprlock = {};
-  security.pam.services.sddm.enableGnomeKeyring = true;
-  security.pam.services.login.enableGnomeKeyring = true;
 
-  # GNOME Keyring Daemon for persistent session tokens, browser cookies & secrets
+  # KDE Wallet — auto-unlock on login via PAM
+  security.pam.services.sddm.kwallet.enable = true;
+  security.pam.services.login.kwallet.enable = true;
+
+  # GNOME Keyring still needed for libsecret/ssh-agent compatibility (browser cookies, etc.)
   services.gnome.gnome-keyring.enable = true;
 
   # GVFS for virtual filesystems, trash, network shares, and file-open handlers
@@ -70,7 +72,9 @@
     gsettings-desktop-schemas
     glib
     libsecret
-    seahorse
+    kdePackages.kwallet
+    kdePackages.kwallet-pam
+    kdePackages.kwalletmanager
     xdg-utils
     shared-mime-info
     kdePackages.kservice
