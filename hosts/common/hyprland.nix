@@ -21,9 +21,6 @@
   security.pam.services.sddm.kwallet.enable = true;
   security.pam.services.login.kwallet.enable = true;
 
-  # GNOME Keyring still needed for libsecret/ssh-agent compatibility (browser cookies, etc.)
-  services.gnome.gnome-keyring.enable = true;
-
   # GVFS for virtual filesystems, trash, network shares, and file-open handlers
   services.gvfs.enable = true;
 
