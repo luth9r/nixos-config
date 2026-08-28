@@ -29,6 +29,11 @@ let
     colorBorderActive2Rgb = hexToRgb vars.colorBorderActive2;
     colorWarningRgb = hexToRgb vars.colorWarning;
   };
+
+  configuredAutostart = pkgs.replaceVars ./lua/autostart.lua {
+    polkitAgent = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+    portalDaemon = "${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal";
+  };
 in
 {
   home.packages = with pkgs; [
@@ -87,7 +92,7 @@ in
   xdg.configFile."hypr/animations.lua".source = ./lua/animations.lua;
   xdg.configFile."hypr/keybinds.lua".source = ./lua/keybinds.lua;
   xdg.configFile."hypr/rules.lua".source = ./lua/rules.lua;
-  xdg.configFile."hypr/autostart.lua".source = ./lua/autostart.lua;
+  xdg.configFile."hypr/autostart.lua".source = configuredAutostart;
 
   # Hyprlock and Hypridle configs
   xdg.configFile."hypr/hyprlock.conf".source = configuredHyprlock;
