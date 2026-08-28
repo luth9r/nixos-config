@@ -39,6 +39,8 @@ in
     wayland.enable = true;
     extraPackages = with pkgs; [
       sddm-astronaut
+      bibata-cursors
+      kdePackages.breeze
       kdePackages.qtmultimedia
       kdePackages.qtsvg
       kdePackages.qtvirtualkeyboard
