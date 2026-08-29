@@ -62,7 +62,7 @@ hl.window_rule({
     match = { class = "(xdg-desktop-portal-kde|xdg-desktop-portal-gtk|org.kde.kdialog)" },
     float = true,
     center = true,
-    size = { x = "50%", y = "50%" },
+    size = { "50%", "50%" },
 })
 
 hl.window_rule({
@@ -70,5 +70,5 @@ hl.window_rule({
     match = { title = "(Open File|Save File|Choose Files|All Files|Select a Directory|Open Folder|Save As|Upload|File Upload)" },
     float = true,
     center = true,
-    size = { x = "50%", y = "50%" },
+    size = { "50%", "50%" },
 })
