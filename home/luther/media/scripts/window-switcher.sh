@@ -8,6 +8,39 @@ if [ -z "$clients_json" ] || [ "$clients_json" == "[]" ]; then
     exit 0
 fi
 
+# Collect all system .desktop directories like Rofi drun does
+DESKTOP_DIRS=(
+    "/home/luther/.local/share/applications"
+    "/etc/profiles/per-user/luther/share/applications"
+    "/home/luther/.nix-profile/share/applications"
+    "/run/current-system/sw/share/applications"
+)
+
+# Function to dynamically resolve the exact Icon= from system .desktop entries
+get_desktop_icon() {
+    local class="$1"
+    local lower_class="${class,,}"
+    local icon=""
+
+    # 1. Search for direct class.desktop (e.g. firefox.desktop, kitty.desktop, antigravity-ide.desktop)
+    for dir in "${DESKTOP_DIRS[@]}"; do
+        if [ -d "$dir" ]; then
+            for f in "$dir"/*"${lower_class}"*.desktop "$dir"/*"${class}"*.desktop; do
+                if [ -f "$f" ]; then
+                    icon=$(grep -m1 '^Icon=' "$f" | cut -d'=' -f2)
+                    if [ -n "$icon" ]; then
+                        echo "$icon"
+                        return
+                    fi
+                fi
+            done
+        fi
+    done
+
+    # Fallback to class name
+    echo "$class"
+}
+
 declare -A ADDR_MAP
 ENTRIES=""
 
@@ -17,53 +50,25 @@ while IFS= read -r line; do
     title=$(echo "$line" | jq -r '.title')
     addr=$(echo "$line" | jq -r '.address')
 
-    # Format clean application name and title
-    short_title="${title:0:28}"
-    if [ ${#title} -gt 28 ]; then
+    # Format clean title
+    short_title="${title:0:26}"
+    if [ ${#title} -gt 26 ]; then
         short_title="${short_title}..."
     fi
 
-    # Display label: [WS 1] Class - Title
     display_name="[WS $ws] $class — $short_title"
     if [ -z "$title" ] || [ "$title" == "null" ]; then
         display_name="[WS $ws] $class"
     fi
 
-    # Resolve system icon name
-    icon="$class"
-    icon_lower=$(echo "$class" | tr '[:upper:]' '[:lower:]')
-
-    # Match common window classes to standard desktop icon names
-    case "$icon_lower" in
-        *kitty*) icon="kitty" ;;
-        *firefox*) icon="firefox" ;;
-        *zen*) icon="zen" ;;
-        *zed*|*zeditor*) icon="dev.zed.Zed" ;;
-        *rider*) icon="rider" ;;
-        *dolphin*) icon="system-file-manager" ;;
-        *discord*) icon="discord" ;;
-        *telegram*|*materialgram*) icon="telegram" ;;
-        *insomnia*) icon="insomnia" ;;
-        *antigravity*) icon="antigravity-ide" ;;
-        *code*|*visual-studio-code*) icon="code" ;;
-        *spotify*) icon="spotify" ;;
-        *steam*) icon="steam" ;;
-        *vlc*) icon="vlc" ;;
-        *celluloid*) icon="celluloid" ;;
-        *loupe*) icon="org.gnome.Loupe" ;;
-        *) icon="$icon_lower" ;;
-    esac
-
-    # If icon is antigravity and standard lookup needs direct path fallback
-    if [ "$icon" == "antigravity-ide" ] && [ -f "/run/current-system/sw/share/icons/hicolor/1024x1024/apps/antigravity-ide.png" ]; then
-        icon="/run/current-system/sw/share/icons/hicolor/1024x1024/apps/antigravity-ide.png"
-    fi
+    # Automatically extract official application icon from system .desktop files
+    icon=$(get_desktop_icon "$class")
 
     ADDR_MAP["$display_name"]="$addr"
     ENTRIES+="${display_name}\0icon\x1f${icon}\n"
 done < <(echo "$clients_json" | jq -c 'sort_by(.workspace.id)[]')
 
-# Open grid view with large crisp application icons
+# Open grid view with native system application icons
 THEME_PATH="$HOME/.config/rofi/window.rasi"
 ROFI_ARGS=(-dmenu -i -p "󱂬 Windows" -show-icons)
 if [ -f "$THEME_PATH" ]; then
