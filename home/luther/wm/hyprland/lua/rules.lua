@@ -56,13 +56,13 @@ hl.window_rule({
     idle_inhibit = "fullscreen",
 })
 
--- File Chooser & Open/Save File Dialogs (50% Screen Size & Centered)
+-- File Chooser & Open/Save File Dialogs (Centered & Sized)
 hl.window_rule({
     name = "float-file-pickers",
-    match = { class = "(org.freedesktop.impl.portal.desktop.kde|xdg-desktop-portal-kde|xdg-desktop-portal-gtk|org.kde.kdialog)" },
+    match = { class = ".*(portal|kdialog).*" },
     float = true,
     center = true,
-    size = { "50%", "50%" },
+    size = { 1000, 600 },
 })
 
 hl.window_rule({
@@ -70,5 +70,5 @@ hl.window_rule({
     match = { title = ".*(Open File|Save File|Choose Files|All Files|Select a Directory|Open Folder|Save As|Upload|File Upload).*" },
     float = true,
     center = true,
-    size = { "50%", "50%" },
+    size = { 1000, 600 },
 })
