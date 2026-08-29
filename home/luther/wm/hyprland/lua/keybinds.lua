@@ -72,9 +72,9 @@ for i = 1, max_workspaces do
     -- Switch workspace (Super + Number)
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { description = "Workspaces: Switch to workspace " .. i })
     -- Move active window to workspace and follow focus (Super + Shift + Number)
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = tostring(i) }), { description = "Workspaces: Move window to workspace " .. i .. " (follow focus)" })
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = tostring(i), follow = true }), { description = "Workspaces: Move window to workspace " .. i .. " (follow focus)" })
     -- Throw active window to workspace silently (Super + Alt + Number)
-    hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.window.move({ workspace = tostring(i), silent = true }), { description = "Workspaces: Move window to workspace " .. i .. " (silent)" })
+    hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.window.move({ workspace = tostring(i), follow = false }), { description = "Workspaces: Move window to workspace " .. i .. " (silent)" })
 end
 
 -- Mouse Window & Screen Management
