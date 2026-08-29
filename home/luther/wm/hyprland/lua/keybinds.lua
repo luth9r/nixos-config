@@ -29,6 +29,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal), { description = "Apps
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser), { description = "Apps: Launch browser (" .. format_app_name(browser) .. ")" })
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(file_manager), { description = "Apps: Launch file manager (" .. format_app_name(file_manager) .. ")" })
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(editor), { description = "Apps: Launch code editor (" .. format_app_name(editor) .. ")" })
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("~/.config/hypr/scripts/window-switcher.sh"), { description = "Apps: Switch active windows by workspace (Rofi)" })
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy"), { description = "Apps: Clipboard history manager" })
 hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("~/.config/hypr/scripts/cheatsheet.sh"), { description = "Apps: Show keybindings cheatsheet" })
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-wall.sh"), { description = "Rice: Change wallpaper" })

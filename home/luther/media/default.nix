@@ -71,4 +71,9 @@
     source = ./scripts/find-files.sh;
     executable = true;
   };
+
+  xdg.configFile."hypr/scripts/window-switcher.sh" = {
+    source = ./scripts/window-switcher.sh;
+    executable = true;
+  };
 }
