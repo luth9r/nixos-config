@@ -44,7 +44,7 @@ while IFS= read -r line; do
         *discord*) icon="discord" ;;
         *telegram*|*materialgram*) icon="telegram" ;;
         *insomnia*) icon="insomnia" ;;
-        *antigravity*) icon="google-antigravity" ;;
+        *antigravity*) icon="antigravity-ide" ;;
         *code*|*visual-studio-code*) icon="code" ;;
         *spotify*) icon="spotify" ;;
         *steam*) icon="steam" ;;
@@ -53,6 +53,11 @@ while IFS= read -r line; do
         *loupe*) icon="org.gnome.Loupe" ;;
         *) icon="$icon_lower" ;;
     esac
+
+    # If icon is antigravity and standard lookup needs direct path fallback
+    if [ "$icon" == "antigravity-ide" ] && [ -f "/run/current-system/sw/share/icons/hicolor/1024x1024/apps/antigravity-ide.png" ]; then
+        icon="/run/current-system/sw/share/icons/hicolor/1024x1024/apps/antigravity-ide.png"
+    fi
 
     ADDR_MAP["$display_name"]="$addr"
     ENTRIES+="${display_name}\0icon\x1f${icon}\n"
