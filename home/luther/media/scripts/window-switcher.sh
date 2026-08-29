@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Cache directory for window preview cards
-CACHE_DIR="/tmp/rofi-window-thumbnails"
-mkdir -p "$CACHE_DIR"
-
 # Get current window clients from Hyprland
 clients_json=$(hyprctl clients -j)
 
@@ -20,33 +16,49 @@ while IFS= read -r line; do
     class=$(echo "$line" | jq -r '.class')
     title=$(echo "$line" | jq -r '.title')
     addr=$(echo "$line" | jq -r '.address')
-    at=$(echo "$line" | jq -r '.at | "\(.[0]),\(.[1])"')
-    size=$(echo "$line" | jq -r '.size | "\(.[0])x\(.[1])"')
 
-    # Clean display title
-    display_name="[WS $ws] $class"
-    if [ -n "$title" ]; then
-        short_title="${title:0:26}"
-        display_name="[WS $ws] $short_title"
+    # Format clean application name and title
+    short_title="${title:0:28}"
+    if [ ${#title} -gt 28 ]; then
+        short_title="${short_title}..."
     fi
 
-    # Snapshot window if visible on screen
-    thumb="$CACHE_DIR/${addr}.png"
-    if [ -n "$at" ] && [ -n "$size" ]; then
-        grim -g "${at} ${size}" "$thumb" 2>/dev/null || true
+    # Display label: [WS 1] Class - Title
+    display_name="[WS $ws] $class — $short_title"
+    if [ -z "$title" ] || [ "$title" == "null" ]; then
+        display_name="[WS $ws] $class"
     fi
 
-    # Pick thumbnail if valid, otherwise fallback to system icon theme
+    # Resolve system icon name
     icon="$class"
-    if [ -f "$thumb" ] && [ -s "$thumb" ]; then
-        icon="$thumb"
-    fi
+    icon_lower=$(echo "$class" | tr '[:upper:]' '[:lower:]')
+
+    # Match common window classes to standard desktop icon names
+    case "$icon_lower" in
+        *kitty*) icon="kitty" ;;
+        *firefox*) icon="firefox" ;;
+        *zen*) icon="zen" ;;
+        *zed*|*zeditor*) icon="dev.zed.Zed" ;;
+        *rider*) icon="rider" ;;
+        *dolphin*) icon="system-file-manager" ;;
+        *discord*) icon="discord" ;;
+        *telegram*|*materialgram*) icon="telegram" ;;
+        *insomnia*) icon="insomnia" ;;
+        *antigravity*) icon="google-antigravity" ;;
+        *code*|*visual-studio-code*) icon="code" ;;
+        *spotify*) icon="spotify" ;;
+        *steam*) icon="steam" ;;
+        *vlc*) icon="vlc" ;;
+        *celluloid*) icon="celluloid" ;;
+        *loupe*) icon="org.gnome.Loupe" ;;
+        *) icon="$icon_lower" ;;
+    esac
 
     ADDR_MAP["$display_name"]="$addr"
     ENTRIES+="${display_name}\0icon\x1f${icon}\n"
 done < <(echo "$clients_json" | jq -c 'sort_by(.workspace.id)[]')
 
-# Open grid view matching the wallpaper picker
+# Open grid view with large crisp application icons
 THEME_PATH="$HOME/.config/rofi/window.rasi"
 ROFI_ARGS=(-dmenu -i -p "󱂬 Windows" -show-icons)
 if [ -f "$THEME_PATH" ]; then
