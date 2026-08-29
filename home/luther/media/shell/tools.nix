@@ -44,9 +44,14 @@
     kdePackages.kdegraphics-thumbnailers
     kdePackages.ffmpegthumbs
     kdePackages.ark
+    p7zip
+    unrar
+    zip
+    zstd
     poppler
     zed-editor
     chafa
+    du-dust
   ];
 
   xdg.configFile."fastfetch/config.jsonc".source = ./fastfetch/config.jsonc;

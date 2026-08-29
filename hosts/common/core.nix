@@ -18,6 +18,9 @@
   # UPower daemon for battery percentage, health, and status queries
   services.upower.enable = true;
 
+  # UDisks2 daemon for automounting USB and external drives without root password
+  services.udisks2.enable = true;
+
   # Time zone and internationalisation
   time.timeZone = "Europe/Warsaw";
   i18n.defaultLocale = "en_US.UTF-8";
