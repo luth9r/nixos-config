@@ -77,6 +77,7 @@ in
         file_manager = "${vars.fileManager}",
         browser = "${vars.browser}",
         editor = "${vars.editor}",
+        qt_scale = "${vars.qtScale}",
     }
     return vars
   '';

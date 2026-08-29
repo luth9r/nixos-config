@@ -5,10 +5,14 @@ hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
+local vars = require("vars")
+local qt_scale = vars.qt_scale or "1.25"
+
 -- Toolkit Backend Variables
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+hl.env("QT_SCALE_FACTOR", tostring(qt_scale))
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 
 -- Cursor & Hybrid GPU Hardware Cursor Fix
