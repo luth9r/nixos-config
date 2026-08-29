@@ -63,6 +63,26 @@
         end
       end
 
+      # Smart Nix Cleanup with optional generations count (default 3)
+      function nc
+        set -l keep_count 3
+        if test (count $argv) -gt 0
+          set keep_count $argv[1]
+        end
+        echo "Cleaning Nix store and profiles (keeping $keep_count generations)..."
+        nh clean all --keep $keep_count
+      end
+
+      # Clean bootloader entries & old system generations only
+      function ncb
+        set -l keep_count 1
+        if test (count $argv) -gt 0
+          set keep_count $argv[1]
+        end
+        echo "Cleaning boot generations (keeping $keep_count latest)..."
+        nh clean all --keep $keep_count --no-direnv
+      end
+
       # Keybindings using Alt combinations (Alt+F for grep, Alt+P for find)
       function fish_user_key_bindings
         # Search code/text: Alt + F (US) / Alt + А (RU, UA)
@@ -90,7 +110,6 @@
       nr = "nh os switch";
       nrt = "nh os test";
       nrb = "nh os boot";
-      nc = "nh clean all --keep 3";
       nfu = "nix flake update $FLAKE";
 
       # Standalone search aliases
