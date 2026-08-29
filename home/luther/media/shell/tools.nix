@@ -51,7 +51,7 @@
     poppler
     zed-editor
     chafa
-    du-dust
+    dust
   ];
 
   xdg.configFile."fastfetch/config.jsonc".source = ./fastfetch/config.jsonc;
