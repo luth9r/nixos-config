@@ -69,12 +69,12 @@ hl.bind(mainMod .. " + j",     hl.dsp.focus({ direction = "down" }), { descripti
 -- Throw active window to workspace silently without switching (Super + Alt + [1..9, 0])
 for i = 1, max_workspaces do
     local key = i % 10
-    -- Switch workspace
+    -- Switch workspace (Super + Number)
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { description = "Workspaces: Switch to workspace " .. i })
     -- Move active window to workspace and follow focus (Super + Shift + Number)
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = tostring(i), silent = false }), { description = "Workspaces: Move window to workspace " .. i .. " (follow focus)" })
     -- Throw active window to workspace silently (Super + Alt + Number)
-    hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.window.move({ workspace = tostring(i), silent = true }), { description = "Workspaces: Move window to workspace " .. i .. " (silent)" })
+    hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.exec_cmd("hyprctl dispatch movetoworkspacesilent " .. i), { description = "Workspaces: Move window to workspace " .. i .. " (silent)" })
 end
 
 -- Mouse Window & Screen Management
