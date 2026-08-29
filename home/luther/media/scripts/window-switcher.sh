@@ -87,12 +87,12 @@ if [ -n "$SELECTED_INDEX" ] && [ "$SELECTED_INDEX" -ge 0 ] 2>/dev/null; then
     TARGET_WS="${WORKSPACE_ARR[$SELECTED_INDEX]}"
     TARGET_ADDR="${ADDR_ARR[$SELECTED_INDEX]}"
 
-    # In Hyprland 0.56+ (Lua runtime), use hyprctl eval for robust dispatch
+    # In Hyprland 0.56 Lua API: hl.dsp.focus creates dispatcher object, hl.dispatch executes it
     if [ -n "$TARGET_WS" ]; then
-        hyprctl eval "hl.dsp.focus({ workspace = $TARGET_WS })"
+        hyprctl eval "hl.dispatch(hl.dsp.focus({ workspace = $TARGET_WS }))"
     fi
 
     if [ -n "$TARGET_ADDR" ]; then
-        hyprctl eval "hl.dsp.window.bring_to_top({ window = '$TARGET_ADDR' })"
+        hyprctl eval "hl.dispatch(hl.dsp.focus({ window = '$TARGET_ADDR' }))"
     fi
 fi
