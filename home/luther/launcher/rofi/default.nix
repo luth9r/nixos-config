@@ -19,4 +19,5 @@ in
   xdg.configFile."rofi/config.rasi".source = ./config.rasi;
   xdg.configFile."rofi/colors.rasi".source = configuredColors;
   xdg.configFile."rofi/wallpaper.rasi".source = ./wallpaper.rasi;
+  xdg.configFile."rofi/window.rasi".source = ./window.rasi;
 }

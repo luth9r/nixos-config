@@ -1,0 +1,112 @@
+/**
+ * Window Switcher Grid Theme with Live Previews for Rofi
+ * Matches wallpaper picker style with cards and large previews
+ */
+
+@import "colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+configuration {
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+window {
+    height: 540px;
+    width: 820px;
+    border: 2px solid;
+    border-color: @border-col;
+    border-radius: 16px;
+    background-color: @bg;
+    padding: 20px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 16px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @bg-alt;
+    border: 1px solid;
+    border-color: @border-col;
+    border-radius: 10px;
+    padding: 10px 16px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+    font-weight: bold;
+    margin: 0px 8px 0px 0px;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Search active windows...";
+    placeholder-color: @fg-dim;
+}
+
+listview {
+    background-color: transparent;
+    columns: 3;
+    lines: 2;
+    spacing: 14px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+    flow: horizontal;
+    scrollbar: false;
+    border: 0px;
+}
+
+element {
+    background-color: @bg-alt;
+    text-color: @fg;
+    border-radius: 12px;
+    border: 1px solid;
+    border-color: transparent;
+    padding: 12px;
+    orientation: vertical;
+    spacing: 8px;
+    cursor: pointer;
+}
+
+element-icon {
+    size: 130px;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color: @accent;
+    border: 2px solid;
+    border-color: @accent;
+}
+
+element selected.active {
+    background-color: @bg-alt;
+    text-color: @accent;
+    border: 2px solid;
+    border-color: @accent;
+}
