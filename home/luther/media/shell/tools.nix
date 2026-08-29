@@ -46,6 +46,7 @@
     kdePackages.ark
     poppler
     zed-editor
+    chafa
   ];
 
   xdg.configFile."fastfetch/config.jsonc".source = ./fastfetch/config.jsonc;

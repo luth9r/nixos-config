@@ -31,7 +31,14 @@
         if test -f "$script"
           set -l target (bash "$script")
           if test -n "$target"
-            commandline -i (string escape "$target")
+            if test -z (commandline)
+              # Open directly in system default app / editor
+              xdg-open "$target" >/dev/null 2>&1 &
+              disown
+            else
+              # If user already typed something in terminal, insert path
+              commandline -i (string escape "$target")
+            end
           end
           commandline -f repaint
         end
@@ -43,7 +50,14 @@
         if test -f "$script"
           set -l target (bash "$script")
           if test -n "$target"
-            commandline -i (string escape "$target")
+            if test -z (commandline)
+              # Open directly in system default app / editor
+              xdg-open "$target" >/dev/null 2>&1 &
+              disown
+            else
+              # If user already typed something in terminal, insert path
+              commandline -i (string escape "$target")
+            end
           end
           commandline -f repaint
         end
