@@ -89,10 +89,10 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, descr
 
 -- Multimedia, Brightness, Airplane & Fn Keys
 hl.bind("XF86RFKill",           hl.dsp.exec_cmd("~/.config/hypr/scripts/airplane-mode.sh"), { locked = true, description = "System: Toggle airplane mode" })
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -u -i 5"), { locked = true, repeating = true, description = "Media: Volume up (+5%)" })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -u -d 5"), { locked = true, repeating = true, description = "Media: Volume down (-5%)" })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("pamixer -t"),       { locked = true, repeating = true, description = "Media: Toggle audio mute" })
-hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("pamixer --default-source -t"), { locked = true, repeating = true, description = "Media: Toggle microphone mute" })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wayle audio output-volume +5"), { locked = true, repeating = true, description = "Media: Volume up (+5%)" })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wayle audio output-volume -5"), { locked = true, repeating = true, description = "Media: Volume down (-5%)" })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wayle audio output-mute"),       { locked = true, repeating = true, description = "Media: Toggle audio mute" })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wayle audio input-mute"),        { locked = true, repeating = true, description = "Media: Toggle microphone mute" })
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl set +5%"),       { locked = true, repeating = true, description = "Media: Brightness up (+5%)" })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl set 5%-"),       { locked = true, repeating = true, description = "Media: Brightness down (-5%)" })
 hl.bind("XF86AudioPlay",        hl.dsp.exec_cmd("playerctl play-pause"), { locked = true, description = "Media: Play / Pause" })
