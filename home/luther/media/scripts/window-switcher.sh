@@ -8,7 +8,7 @@ if [ -z "$clients_json" ] || [ "$clients_json" == "[]" ]; then
     exit 0
 fi
 
-# Dynamically parse XDG_DATA_DIRS and user home for universal portability across any user/system
+# Universal dynamic desktop entry directories across any user and system
 DESKTOP_DIRS=(
     "${XDG_DATA_HOME:-$HOME/.local/share}/applications"
     "/etc/profiles/per-user/$USER/share/applications"
@@ -16,7 +16,6 @@ DESKTOP_DIRS=(
     "/run/current-system/sw/share/applications"
 )
 
-# Also append all paths from XDG_DATA_DIRS dynamically
 IFS=':' read -ra EXTRA_DIRS <<< "$XDG_DATA_DIRS"
 for dir in "${EXTRA_DIRS[@]}"; do
     if [ -d "$dir/applications" ]; then
@@ -88,13 +87,12 @@ if [ -n "$SELECTED_INDEX" ] && [ "$SELECTED_INDEX" -ge 0 ] 2>/dev/null; then
     TARGET_WS="${WORKSPACE_ARR[$SELECTED_INDEX]}"
     TARGET_ADDR="${ADDR_ARR[$SELECTED_INDEX]}"
 
-    # 1. Switch directly to the window's workspace
+    # In Hyprland 0.56+ (Lua runtime), use hyprctl eval for robust dispatch
     if [ -n "$TARGET_WS" ]; then
-        hyprctl dispatch workspace "$TARGET_WS"
+        hyprctl eval "hl.dsp.focus({ workspace = $TARGET_WS })"
     fi
 
-    # 2. Focus the exact window on that workspace
     if [ -n "$TARGET_ADDR" ]; then
-        hyprctl dispatch focuswindow "address:$TARGET_ADDR"
+        hyprctl eval "hl.dsp.window.bring_to_top({ window = '$TARGET_ADDR' })"
     fi
 fi
