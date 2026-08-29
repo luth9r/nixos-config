@@ -3,11 +3,6 @@
 # Get current window clients from Hyprland
 clients_json=$(hyprctl clients -j)
 
-if [ -z "$clients_json" ] || [ "$clients_json" == "[]" ]; then
-    notify-send -a "Window Switcher" "No open windows" "There are no active application windows."
-    exit 0
-fi
-
 # Universal dynamic desktop entry directories across any user and system
 DESKTOP_DIRS=(
     "${XDG_DATA_HOME:-$HOME/.local/share}/applications"
