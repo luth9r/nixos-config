@@ -8,12 +8,21 @@ if [ -z "$clients_json" ] || [ "$clients_json" == "[]" ]; then
     exit 0
 fi
 
+# Dynamically parse XDG_DATA_DIRS and user home for universal portability across any user/system
 DESKTOP_DIRS=(
-    "/home/luther/.local/share/applications"
-    "/etc/profiles/per-user/luther/share/applications"
-    "/home/luther/.nix-profile/share/applications"
+    "${XDG_DATA_HOME:-$HOME/.local/share}/applications"
+    "/etc/profiles/per-user/$USER/share/applications"
+    "$HOME/.nix-profile/share/applications"
     "/run/current-system/sw/share/applications"
 )
+
+# Also append all paths from XDG_DATA_DIRS dynamically
+IFS=':' read -ra EXTRA_DIRS <<< "$XDG_DATA_DIRS"
+for dir in "${EXTRA_DIRS[@]}"; do
+    if [ -d "$dir/applications" ]; then
+        DESKTOP_DIRS+=("$dir/applications")
+    fi
+done
 
 get_desktop_icon() {
     local class="$1"
