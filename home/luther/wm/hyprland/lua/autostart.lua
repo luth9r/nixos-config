@@ -29,4 +29,7 @@ hl.on("hyprland.start", function()
 
     -- Build KDE application service cache for Dolphin "Open With" dialog
     hl.exec_cmd("kbuildsycoca6 --noincremental 2>/dev/null || true")
+
+    -- Precompile keybindings cheatsheet cache for instant launching
+    hl.exec_cmd("~/.config/hypr/scripts/cheatsheet.sh --compile 2>/dev/null || true")
 end)

@@ -44,7 +44,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }), { descrip
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ action = "toggle" }), { description = "Window: Toggle fullscreen mode" })
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo(), { description = "Window: Toggle pseudo tiling" })
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"), { description = "Window: Toggle split layout (Dwindle)" })
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload && (pkill -x wayle; wayle shell &) && notify-send -a 'Hyprland' -i 'system-reboot' 'Hyprland Reloaded' 'Configuration reloaded successfully'"), { description = "System: Reload Hyprland configuration" })
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload && (~/.config/hypr/scripts/cheatsheet.sh --compile &) && (pkill -x wayle; wayle shell &) && notify-send -a 'Hyprland' -i 'system-reboot' 'Hyprland Reloaded' 'Configuration reloaded successfully'"), { description = "System: Reload Hyprland configuration" })
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit(), { description = "System: Exit Hyprland session" })
 
 -- Screenshots & Screen Recording
