@@ -87,13 +87,14 @@ in
     style.name = "breeze";
   };
 
-  # Session variables for dark theme, scaling and KDE file picker
+  # Session variables for dark theme, scaling, Flatpaks and KDE file picker
   home.sessionVariables = {
     GTK_THEME = vars.gtkTheme;
     QT_QPA_PLATFORMTHEME = "kde";
     QT_STYLE_OVERRIDE = "breeze";
     QT_SCALE_FACTOR = vars.qtScale or "1.25";
     GTK_USE_PORTAL = "1";
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";
   };
 
   # Cursor settings for Home-Manager
