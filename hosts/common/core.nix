@@ -58,6 +58,21 @@
     auto-optimise-store = true;
   };
 
+  # nix-ld: Run unpatched dynamically linked binaries (Roslyn C#, language servers, VSCode/Zed extensions)
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+      openssl
+      icu
+      libunwind
+      libuuid
+      curl
+      glibc
+    ];
+  };
+
   # Modern Nix Helper (nh) CLI & Generation-aware smart cleanup parameterized from vars.nix
   programs.nh = {
     enable = true;
