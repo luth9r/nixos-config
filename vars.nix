@@ -11,7 +11,7 @@
   # Desktop Environment Preferences
   terminal = "kitty";
   shell = "fish";
-  editor = "zeditor";
+  editor = "code";
   fileManager = "dolphin";
   browser = "firefox";
 

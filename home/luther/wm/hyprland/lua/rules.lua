@@ -9,7 +9,7 @@ hl.window_rule({
 
 hl.window_rule({
     name = "focus-media-viewers",
-    match = { class = "(org.gnome.Loupe|org.kde.gwenview|io.github.celluloid_player.Celluloid|mpv|vlc|org.kde.ark|dev.zed.Zed|org.kde.okular)" },
+    match = { class = "(org.gnome.Loupe|org.kde.gwenview|io.github.celluloid_player.Celluloid|mpv|vlc|org.kde.ark|Code|dev.zed.Zed|org.kde.okular)" },
     focus_on_activate = true,
 })
 

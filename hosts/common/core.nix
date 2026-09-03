@@ -6,6 +6,15 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Declarative 8GB Swap File + zram memory compression
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024; # 8 GB in Megabytes
+    }
+  ];
+  zramSwap.enable = true;
+
   # Networking
   networking.networkmanager.enable = true;
 

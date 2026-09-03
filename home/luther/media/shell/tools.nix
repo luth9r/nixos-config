@@ -49,7 +49,6 @@
     zip
     zstd
     poppler
-    zed-editor
     chafa
     dust
   ];

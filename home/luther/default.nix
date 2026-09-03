@@ -34,12 +34,12 @@
         "inode/directory" = [ "org.kde.dolphin.desktop" ];
 
         # Text & Code
-        "text/plain" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "text/markdown" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/json" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/x-yaml" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/x-shellscript" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/xml" = [ "dev.zed.Zed.desktop" ];
+        "text/plain" = [ "code.desktop" "micro.desktop" ];
+        "text/markdown" = [ "code.desktop" "micro.desktop" ];
+        "application/json" = [ "code.desktop" "micro.desktop" ];
+        "application/x-yaml" = [ "code.desktop" "micro.desktop" ];
+        "application/x-shellscript" = [ "code.desktop" "micro.desktop" ];
+        "application/xml" = [ "code.desktop" ];
         "text/html" = [ "firefox.desktop" ];
 
         # Images
@@ -81,11 +81,11 @@
 
       associations.added = {
         # Text & Code
-        "text/plain" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "text/markdown" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/json" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/x-yaml" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
-        "application/x-shellscript" = [ "dev.zed.Zed.desktop" "micro.desktop" ];
+        "text/plain" = [ "code.desktop" "micro.desktop" ];
+        "text/markdown" = [ "code.desktop" "micro.desktop" ];
+        "application/json" = [ "code.desktop" "micro.desktop" ];
+        "application/x-yaml" = [ "code.desktop" "micro.desktop" ];
+        "application/x-shellscript" = [ "code.desktop" "micro.desktop" ];
 
         # Images
         "image/png" = [ "org.gnome.Loupe.desktop" "io.github.celluloid_player.Celluloid.desktop" ];

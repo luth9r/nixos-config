@@ -10,12 +10,13 @@ local mainMod = "SUPER"
 local max_workspaces = vars.max_workspaces or 10
 local terminal = vars.terminal or "kitty"
 local browser = vars.browser or "firefox"
-local editor = vars.editor or "zeditor"
+local editor = vars.editor or "code"
 local file_manager = vars.file_manager or "dolphin"
 
 -- Helper function to format readable app names dynamically
 local function format_app_name(name)
     if not name or name == "" then return "" end
+    if name == "code" then return "VS Code" end
     if name == "zeditor" then return "Zed" end
     return (name:gsub("^%l", string.upper))
 end
