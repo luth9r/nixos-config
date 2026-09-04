@@ -29,6 +29,7 @@
     slurp
     grim
     grimblast
+    hyprpicker
     ffmpeg
   ];
 
