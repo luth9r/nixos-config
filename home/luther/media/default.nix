@@ -28,6 +28,7 @@
     wf-recorder
     slurp
     grim
+    grimblast
     ffmpeg
   ];
 
