@@ -27,6 +27,7 @@
     slurp
     grim
     satty
+    wf-recorder
     libnotify
     ffmpeg
   ];
