@@ -32,6 +32,10 @@
     ffmpeg
   ];
 
+  imports = [
+    ./satty.nix
+  ];
+
   # Symlink helper scripts into ~/.config/hypr/scripts/
   xdg.configFile."hypr/scripts/change-wall.sh" = {
     source = ./scripts/change-wall.sh;
