@@ -24,12 +24,10 @@
     vlc
     loupe
     awww
-    libnotify
-    wf-recorder
     slurp
     grim
-    grimblast
-    hyprpicker
+    satty
+    libnotify
     ffmpeg
   ];
 
