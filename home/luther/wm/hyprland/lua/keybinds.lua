@@ -49,9 +49,9 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload && (~/.config
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit(), { description = "System: Exit Hyprland session" })
 
 -- Screenshots & Screen Recording
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh area"), { description = "Screenshot: Capture selected area" })
-hl.bind("Print", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh area"), { description = "Screenshot: Capture selected area" })
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh full"), { description = "Screenshot: Capture entire screen" })
+hl.bind("Print", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh edit"), { description = "Screenshot: Capture area & open Satty editor" })
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh area"), { description = "Screenshot: Capture area directly to clipboard & folder" })
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh full"), { description = "Screenshot: Capture entire screen directly to clipboard & folder" })
 hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh area"), { description = "Recording: Toggle area screen recording" })
 hl.bind(mainMod .. " + SHIFT + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh full"), { description = "Recording: Toggle fullscreen screen recording" })
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh area-audio"), { description = "Recording: Toggle area recording with audio" })
