@@ -116,8 +116,28 @@
   # SSD Periodic TRIM
   services.fstrim.enable = true;
 
-  # Power profiles daemon for Wayle / Hyprland
-  services.power-profiles-daemon.enable = true;
+  # Docker Daemon & Virtualisation
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+
+  # Declarative OCI Containers: Portainer Community Edition (Web UI)
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers.portainer = {
+      image = "portainer/portainer-ce:latest";
+      autoStart = true;
+      ports = [
+        "9000:9000"
+        "9443:9443"
+      ];
+      volumes = [
+        "/var/run/docker.sock:/var/run/docker.sock"
+        "portainer_data:/data"
+      ];
+    };
+  };
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;

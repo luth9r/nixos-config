@@ -15,6 +15,7 @@
       "audio"
       "video"
       "input"
+      "docker"
     ];
   };
 }
