@@ -18,7 +18,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("~/.config/hypr/scripts/change-wall.sh --init")
 
     -- Wayle Desktop Bar, Notification Daemon & Control Center
-    hl.exec_cmd("pkill -x wayle; wayle shell")
+    -- Ensure PipeWire/WirePlumber audio sink is ready before starting Wayle so volume module and OSD connect properly
+    hl.exec_cmd("bash -c 'for i in {1..25}; do wpctl inspect @DEFAULT_AUDIO_SINK@ >/dev/null 2>&1 && break; sleep 0.2; done; pkill -x wayle; wayle shell'")
 
     -- Idle & Lock daemon
     hl.exec_cmd("hypridle")
