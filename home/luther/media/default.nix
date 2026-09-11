@@ -24,8 +24,7 @@
     vlc
     loupe
     awww
-    slurp
-    grim
+    grimblast
     satty
     wf-recorder
     libnotify

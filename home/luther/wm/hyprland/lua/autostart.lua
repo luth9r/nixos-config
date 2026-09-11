@@ -19,7 +19,7 @@ hl.on("hyprland.start", function()
 
     -- Wayle Desktop Bar, Notification Daemon & Control Center
     -- Ensure PipeWire/WirePlumber audio sink is ready before starting Wayle so volume module and OSD connect properly
-    hl.exec_cmd("bash -c 'for i in {1..25}; do wpctl inspect @DEFAULT_AUDIO_SINK@ >/dev/null 2>&1 && break; sleep 0.2; done; pkill -x wayle; wayle shell'")
+    hl.exec_cmd("bash -c 'for i in {1..25}; do wpctl status 2>/dev/null | grep -A 2 \"Sinks:\" | grep -q \"\\*\" && break; sleep 0.2; done; pkill -x wayle; wayle shell'")
 
     -- Idle & Lock daemon
     hl.exec_cmd("hypridle")
