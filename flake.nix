@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zap = {
+      url = "github:luth9r/zap";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, zap, ... }@inputs:
     let
       system = "x86_64-linux";
       vars = import ./vars.nix;
@@ -28,6 +32,9 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = { inherit inputs vars; };
+              home-manager.sharedModules = [
+                zap.homeManagerModules.default
+              ];
               home-manager.users.${vars.username} = import ./home/luther;
             }
           ];
@@ -38,7 +45,12 @@
       # Usage: inputs.dotfiles.nixosModules.default
       nixosModules.default = import ./hosts/common;
 
-      # Usage: inputs.dotfiles.homeManagerModules.default
-      homeManagerModules.default = import ./home/luther;
+      # Usage: inputs.nixosConfig.homeManagerModules.default
+      homeManagerModules.default = { ... }: {
+        imports = [
+          zap.homeManagerModules.default
+          (import ./home/luther)
+        ];
+      };
     };
 }

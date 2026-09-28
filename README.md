@@ -29,7 +29,7 @@ Personal NixOS and Home Manager configuration with Hyprland and Wayle. Fully con
 | **Window Manager** | [Hyprland](https://hyprland.org/) | Dynamic Wayland compositor configured with Lua modules |
 | **Status Bar** | [Wayle](https://wayle.app/) | Wayland bar, control center & native `hyprsunset` module |
 | **Terminal** | [Kitty](https://sw.kovidgoyal.net/kitty/) | GPU-accelerated terminal with scrollback search |
-| **Shell & Prompt** | [Fish](https://fishshell.com/) + [Starship](https://starship.rs/) | Interactive shell with `nh` shortcuts and dynamic variables |
+| **Shell & Prompt** | [Fish](https://fishshell.com/) + [Zap](https://github.com/luth9r/zap) | Minimalist sub-millisecond shell prompt written in Zig |
 | **App Launcher** | [Rofi](https://github.com/davatorium/rofi) | Application launcher, wallpaper picker & cheatsheet |
 | **File Manager** | [Dolphin](https://apps.kde.org/dolphin/) | Standalone Qt6 dark theme with thumbnailers |
 | **Code & Text Editors** | [Zed](https://zed.dev/) & [Micro](https://micro-editor.github.io/) | Fast graphical IDE and terminal editor with custom dark theme |
@@ -177,7 +177,7 @@ All personal parameters, device toggles, and hardware choices are centralized in
         │   │   ├── colorschemes/custom-dark.micro
         │   │   ├── default.nix
         │   │   └── settings.json
-        │   └── starship/              # Starship prompt (config inline in default.nix)
+        │   └── zap/                   # Zap prompt (config inline in default.nix)
         │       └── default.nix
         ├── themes/                    # Theming, fonts, icons & cursor configuration
         │   ├── default.nix            # GTK/Qt theme links, Breeze & Tela icons

@@ -7,7 +7,7 @@
     ./launcher/rofi
     ./terminal/kitty
     ./terminal/micro
-    ./terminal/starship
+    ./terminal/zap
     ./media/shell/fish.nix
     ./media/shell/tools.nix
     ./themes
