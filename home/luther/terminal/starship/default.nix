@@ -22,7 +22,7 @@
         symbol = "󰘬";
         truncation_length = 15;
         truncation_symbol = "";
-        format = " 󰜥 [](bold purple)[$symbol $branch(:$remote_branch)](fg:black bg:purple)[](bold purple) ";
+        format = " 󰜥 [](bold purple)[$symbol$branch(:$remote_branch)](fg:black bg:purple)[](bold purple) ";
       };
 
       git_status = {

@@ -8,7 +8,7 @@
     enableZshIntegration = true;
 
     settings = {
-      add_newline = false;
+      add_newline = true;
       format = ''
         $cmd_duration$directory$git_branch$git_status
           $character'';
@@ -22,10 +22,10 @@
 
       git_branch = {
         style = "bold purple";
-        symbol = "󰘬 ";
+        symbol = "󰘬";
         truncation_length = 15;
         truncation_symbol = "";
-        format = "on [$symbol$branch]($style) ";
+        format = "󰜥 [](bold purple)[$symbol $branch(:$remote_branch)](fg:black bg:purple)[](bold purple) ";
       };
 
       git_status = {
@@ -36,7 +36,7 @@
       cmd_duration = {
         min_time = 2000;
         style = "dimmed yellow";
-        format = "took [$duration]($style) ";
+        format = "[$duration]($style) ";
       };
 
       character = {
